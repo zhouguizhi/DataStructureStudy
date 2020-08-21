@@ -1,14 +1,14 @@
 package com.zgz.dynamicArray;
 
-public class MyArrayList1 implements MyList<Integer>{
+public class MyArrayList implements MyList<Integer>{
     private int size;
     private int[] elements;
     private static final int DEFAULT_CAPACITY = 6;
-    public MyArrayList1(int capacity){
+    public MyArrayList(int capacity){
         capacity = capacity<DEFAULT_CAPACITY?DEFAULT_CAPACITY:capacity;
         elements = new int[capacity];
     }
-    public MyArrayList1(){
+    public MyArrayList(){
         this(DEFAULT_CAPACITY);
     }
     @Override
