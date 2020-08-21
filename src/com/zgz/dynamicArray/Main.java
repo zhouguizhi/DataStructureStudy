@@ -9,8 +9,8 @@ public class Main {
         list.add(4);
         list.add(5);
         list.add(6);
-        System.out.println(list.remove(4));
-
-        //测试 你妹的 111111 22222
+        list.add(0,7);
+        list.add(list.size(),8);
+        System.out.println(list);
     }
 }

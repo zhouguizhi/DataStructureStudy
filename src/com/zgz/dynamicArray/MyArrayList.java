@@ -3,7 +3,7 @@ package com.zgz.dynamicArray;
 public class MyArrayList implements MyList<Integer>{
     private int size;
     private int[] elements;
-    private static final int DEFAULT_CAPACITY = 6;
+    private static final int DEFAULT_CAPACITY = 20;
     public MyArrayList(int capacity){
         capacity = capacity<DEFAULT_CAPACITY?DEFAULT_CAPACITY:capacity;
         elements = new int[capacity];
@@ -50,10 +50,14 @@ public class MyArrayList implements MyList<Integer>{
 
     @Override
     public void add(int index,Integer element) {
-        if(index<0||index>=size){
+        if(index<0||index>size){
             throw new IndexOutOfBoundsException("Index:"+index+",Size:"+size);
         }
+        for(int i=size-1;i>=index;i--){
+            elements[i+1] = elements[i];
+        }
         elements[index] = element;
+        size++;
     }
 
     @Override
@@ -61,15 +65,12 @@ public class MyArrayList implements MyList<Integer>{
         if(index<0||index>=size){
             throw new IndexOutOfBoundsException("Index:"+index+",Size:"+size);
         }
-        System.out.println("index="+index);
-        for(int i=0;i<size;i++){
-            System.out.println("i="+elements[i]);
-            if(i>=index){
-                elements[i] = elements[i+1];
-            }
+        int oldValue = elements[index];
+       for(int i =index+1;i<=size-1;i++){
+            elements[i-1] = elements[i];
         }
         size--;
-        return elements[index];
+        return oldValue;
     }
 
     @Override
@@ -89,5 +90,14 @@ public class MyArrayList implements MyList<Integer>{
             }
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+       StringBuilder sb = new StringBuilder();
+       for(int i=0;i<size;i++){
+           sb.append(elements[i]).append(",");
+       }
+       return sb.toString();
     }
 }
