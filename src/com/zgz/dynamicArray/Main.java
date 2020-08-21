@@ -2,7 +2,7 @@ package com.zgz.dynamicArray;
 
 public class Main {
     public static void main(String[] args) {
-        MyArrayList1 list = new MyArrayList1();
+        MyArrayList list = new MyArrayList();
         list.add(1);
         list.add(2);
         list.add(3);
