@@ -11,6 +11,6 @@ public class Main {
         list.add(6);
         System.out.println(list.remove(4));
 
-        //测试 你妹的
+        //测试 你妹的 111111
     }
 }
