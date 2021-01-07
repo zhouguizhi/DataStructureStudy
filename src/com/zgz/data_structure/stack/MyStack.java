@@ -29,6 +29,11 @@ public class MyStack implements IStack{
     }
 
     @Override
+    public void clear() {
+        list.clear();
+    }
+
+    @Override
     public boolean isEmpty() {
         return list.isEmpty();
     }

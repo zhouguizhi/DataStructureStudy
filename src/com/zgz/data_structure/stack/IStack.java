@@ -2,6 +2,7 @@ package com.zgz.data_structure.stack;
 
 public interface IStack {
     int size();
+    void clear();
     boolean isEmpty();
     //查看栈定元素
     int peek();
