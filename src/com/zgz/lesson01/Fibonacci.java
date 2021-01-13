@@ -2,8 +2,8 @@ package com.zgz.lesson01;
 
 public class Fibonacci {
     public static void main(String[] args) {
-        System.out.println(method01(64));
         System.out.println(method02(64));
+        System.out.println(method01(64));
     }
     /**
      * 递归实现斐波那契 缺点是当数据量大的时候性能特别的差 因为
