@@ -12,7 +12,7 @@ package com.zgz.leetCode;
  * 输入: [2,2,1]
  * 输出: 1
  */
-public class OnlyAppearOneInteger {
+public class _14_整数数组找出只出现一次的元素 {
     public static void main(String[] args) {
         int[] arr = {4,1,2,1,2};
         System.out.println("result:="+singleNumber1(arr));

@@ -10,7 +10,7 @@ package com.zgz.leetCode;
  *
  * 解释: 可由子字符串 "ab" 重复两次构成
  */
-public class 重复的子字符串 {
+public class _06_重复的子字符串 {
     public static void main(String[] args) {
         System.out.println(repeatedSubstringPattern("abab"));
         System.out.println(repeatedSubstringPattern("aba"));

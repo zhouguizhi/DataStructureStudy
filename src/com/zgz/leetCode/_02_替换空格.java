@@ -3,7 +3,7 @@ package com.zgz.leetCode;
  * https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/
  * 请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
  */
-public class 替换空格 {
+public class _02_替换空格 {
     public static void main(String[] args) {
         String  str = "We are happy.";
         System.out.println(replaceSpace(str));

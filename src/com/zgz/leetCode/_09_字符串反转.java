@@ -11,7 +11,7 @@ package com.zgz.leetCode;
  * 输入：["h","e","l","l","o"]
  * 输出：["o","l","l","e","h"]
  */
-public class ReverseString {
+public class _09_字符串反转 {
     private static char[] s = {'h','e','l','l','o'};
     public static void main(String[] args) {
         reverseString(s);

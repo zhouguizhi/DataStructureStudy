@@ -6,7 +6,7 @@ import java.util.Map;
  * 这个题目简单 就不分析了,直接用map key是字符,value是这个字符出现的次数
  *
  */
-public class StringInterviewTest {
+public class _08_字符串出现的次数 {
     public static void main(String[] args) {
         System.out.println("输出结果:"+test("aaaaabbbbccc"));
     }

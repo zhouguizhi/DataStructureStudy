@@ -13,7 +13,7 @@ import java.util.Stack;
  * 输出："blue is sky the"
  *
  */
-public class 翻转字符串里的单词 {
+public class _05_翻转字符串里的单词 {
     public static void main(String[] args) {
         String str = "the sky is blue";
         System.out.println(reverseWords(str));

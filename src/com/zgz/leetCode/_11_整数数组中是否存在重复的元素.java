@@ -9,7 +9,7 @@ import java.util.Map;
  * 输入: [1,2,3,1]
  * 输出: true
  */
-public class JudgeRepeatElementArray {
+public class _11_整数数组中是否存在重复的元素 {
     public static void main(String[] args) {
         int[] arr= {2,2,3,4,5};
         System.out.println("result:="+containsDuplicate(arr));

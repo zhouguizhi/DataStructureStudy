@@ -14,7 +14,7 @@ import java.util.Stack;
  * 输入: "()[]{}"
  * 输出: true
  */
-public class EffectiveBrackets {
+public class _13_判断字符串是否有效 {
     private static HashMap<Character, Character> map = new HashMap<>();
     static {
         // key - value

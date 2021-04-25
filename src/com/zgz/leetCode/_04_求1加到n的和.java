@@ -5,7 +5,7 @@ package com.zgz.leetCode;
  *
  * 思路:
  */
-public class 求1加到n的和 {
+public class _04_求1加到n的和 {
     public static void main(String[] args) {
         System.out.println(Sum_Solution(3));
     }

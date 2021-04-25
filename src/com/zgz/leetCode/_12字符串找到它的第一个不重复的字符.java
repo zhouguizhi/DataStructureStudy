@@ -24,7 +24,7 @@ import java.util.Map;
  * 第一个不重复出现字符的下标
  *
  */
-public class FindCharacterOnlyAppearOneString {
+public class _12字符串找到它的第一个不重复的字符 {
     public static void main(String[] args) {
         System.out.println("res:="+firstUniqChar("leetcode"));
         System.out.println("result:="+firstUniqChar("loveleetcode"));

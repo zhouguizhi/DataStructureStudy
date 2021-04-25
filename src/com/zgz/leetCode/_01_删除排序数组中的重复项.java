@@ -9,7 +9,7 @@ package com.zgz.leetCode;
  * 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
  * 你不需要考虑数组中超出新长度后面的元素。
  */
-public class DeleteSortArrayRepeatElement {
+public class _01_删除排序数组中的重复项 {
     public static void main(String[] args) {
         int[]  nums = {1,1,2,2,3,4,5};
         int index = removeDuplicates(nums);

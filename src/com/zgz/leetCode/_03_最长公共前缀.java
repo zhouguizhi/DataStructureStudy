@@ -15,7 +15,7 @@ import java.util.Arrays;
  * 0 <= strs[i].length <= 200
  * strs[i] 仅由小写英文字母组成
  */
-public class 最长公共前缀 {
+public class _03_最长公共前缀 {
     public static void main(String[] args) {
         String[] strs = {"flower","flaw","flight"};
         System.out.println(longestCommonPrefix1(strs));
