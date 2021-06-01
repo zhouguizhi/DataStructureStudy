@@ -1,6 +1,8 @@
 package com.zgz.leetCode;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 /**
  *https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x248f5/
  * 描述:给定一个整数数组，判断是否存在重复元素。
@@ -12,8 +14,15 @@ import java.util.Map;
 public class _11_整数数组中是否存在重复的元素 {
     public static void main(String[] args) {
         int[] arr= {2,2,3,4,5};
-        System.out.println("result:="+containsDuplicate(arr));
+//        System.out.println("result:="+containsDuplicate(arr));
+        System.out.println("result:="+findRepeatNum(arr));
     }
+
+    /**
+     *
+     * @param nums
+     * @return
+     */
     public static boolean containsDuplicate(int[] nums) {
         if(nums==null||nums.length==0){
             return false;
@@ -25,6 +34,24 @@ public class _11_整数数组中是否存在重复的元素 {
                 return true;
             }else{
                 map.put(nums[i],i);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 这种做法  这是利用Hashset不能重复添加数据 add方法有返回值
+     * @param nums
+     * @return
+     */
+    public static boolean findRepeatNum(int[] nums){
+        if(null==nums||nums.length==0){
+            return false;
+        }
+        Set<Integer> set = new HashSet<>();
+        for(Integer num:nums){
+            if(!set.add(num)){
+                return true;
             }
         }
         return false;
