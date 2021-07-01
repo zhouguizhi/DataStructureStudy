@@ -1,4 +1,4 @@
-package com.zgz.dynamicArray;
+package com.zgz.data_structure.array;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,9 @@
 package com.zgz.data_structure.binarysearchtree;
+//import com.zgz.data_structure.binarysearchtree.alnoe.Comparable;
+//import com.zgz.data_structure.binarysearchtree.alnoe.Comparator;
+
+import java.util.Comparator;
+
 /**
  * <E extends Comparable>  表示传递的元素要实现Comparable接口
  * @param <E>
@@ -22,6 +27,7 @@ public class BinarySearchTree<E>{
         return size==0;
     }
     public void add(E element){
+        checkNotNull(element);
         if(null==root){
             root = new Node<>(element,null);
             size++;
@@ -54,7 +60,7 @@ public class BinarySearchTree<E>{
         size++;
     }
     public void remove(E element){
-
+        checkNotNull(element);
     }
     public boolean contains(E element){
         return false;
@@ -62,11 +68,12 @@ public class BinarySearchTree<E>{
 
     /**
      * 返回0 e1=e2 1 e1>e2 -1 el<e2
+     * 如果构造函数没有传递Comparator对象进行比较的话,就强制让对象实现Comparable接口进行比较
      * @return
      */
     private int compare(E e1,E e2){
         if(comparator!=null){
-            return comparator.compareTo(e1,e2);
+            return comparator.compare(e1,e2);
         }
         return ((Comparable<E>)e1).compareTo(e2);
     }

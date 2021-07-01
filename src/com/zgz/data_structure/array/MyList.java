@@ -1,4 +1,4 @@
-package com.zgz.dynamicArray;
+package com.zgz.data_structure.array;
 
 public interface MyList<E> {
     public int size();

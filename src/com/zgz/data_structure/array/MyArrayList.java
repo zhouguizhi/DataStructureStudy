@@ -1,4 +1,4 @@
-package com.zgz.dynamicArray;
+package com.zgz.data_structure.array;
 
 public class MyArrayList implements MyList<Integer>{
     private int size;

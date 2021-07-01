@@ -1,4 +1,7 @@
 package com.zgz.data_structure.binarysearchtree;
+
+//import com.zgz.data_structure.binarysearchtree.alnoe.Comparable;
+
 /**
  * <E extends Comparable>  表示传递的元素要实现Comparable接口
  * @param <E>
@@ -13,6 +16,7 @@ public class BinarySearchTree1<E extends Comparable> {
         return size==0;
     }
     public void add(E element){
+        checkNotNull(element);
         if(null==root){
             root = new Node<>(element,null);
             size++;
