@@ -82,7 +82,21 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             throw new IllegalArgumentException("非法参数异常");
         }
     }
-
+    /**
+     * 后序遍历
+     */
+    public void postorderTraversal(){
+        postorderTraversal(root);
+    }
+    private void postorderTraversal(Node<E> node){
+        if(null==node){
+            return;
+        }
+        postorderTraversal(node.left);
+        postorderTraversal(node.right);
+        //访问根节点
+        System.out.println(node.element);
+    }
     /**
      * 中序遍历
      */

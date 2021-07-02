@@ -5,7 +5,8 @@ public class Main {
     static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,12};
     public static void main(String[] args) {
 //        test1();
-        test2();
+//        test2();
+        test3();
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
@@ -35,6 +36,15 @@ public class Main {
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
         binarySearchTree.inorderTraversal();
+    }
+    /**
+     * 后序遍历测试
+     */
+    private static void test3() {
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+        binarySearchTree.postorderTraversal();
     }
     static BinarySearchTree createObj(){
         return new BinarySearchTree();
