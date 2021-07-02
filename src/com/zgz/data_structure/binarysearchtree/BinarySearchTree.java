@@ -85,6 +85,24 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             throw new IllegalArgumentException("非法参数异常");
         }
     }
+    //
+    public void levelOrderTraversal(Visitor visitor){
+        if(root==null||visitor==null){
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            visitor.visit(node.element);
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+        }
+    }
     /**
      * 层序遍历
      * @param
@@ -137,6 +155,21 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         inOrderTraversal(node.right);
     }
     /**
+     * 中序遍历,带自定义的访问
+     */
+    public void inOrderTraversal(Visitor visitor){
+        inOrderTraversal(root,visitor);
+    }
+
+    private void inOrderTraversal(Node<E> node,Visitor visitor){
+        if(null==node||visitor==null){
+            return;
+        }
+        inOrderTraversal(node.left,visitor);
+        visitor.visit(node.element);
+        inOrderTraversal(node.right,visitor);
+    }
+    /**
      * 前序遍历
      */
     public void preOrderTraversal(){
@@ -149,6 +182,14 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         System.out.println(node.element);
         preOrderTraversal(node.left);
         preOrderTraversal(node.right);
+    }
+
+    /**
+     * 访问器
+     * @return
+     */
+    public interface Visitor<E>{
+        void visit(E element);
     }
     @Override
     public Object root() {

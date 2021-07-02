@@ -9,7 +9,9 @@ public class Main {
 //        test1();
 //        test2();
 //        test3();
-          test4();
+//         test4();
+//        test5();
+        test6();
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
@@ -57,6 +59,27 @@ public class Main {
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
         binarySearchTree.levelOrderTraversal();
+    }
+    /**
+     * 层序遍历测试
+     */
+    private static void test5() {
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+        binarySearchTree.levelOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public void visit(Integer element) {
+                System.out.println("_"+element+"_");
+            }
+        });
+    }
+    //中序遍历测试 增加自定义访问
+    private static void test6() {
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+        binarySearchTree.inOrderTraversal((BinarySearchTree.Visitor<Integer>) element -> System.out.println(element+10));
     }
     static BinarySearchTree createObj(){
         return new BinarySearchTree();
