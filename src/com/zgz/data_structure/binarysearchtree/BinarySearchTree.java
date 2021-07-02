@@ -1,14 +1,11 @@
 package com.zgz.data_structure.binarysearchtree;
-//import com.zgz.data_structure.binarysearchtree.alnoe.Comparable;
-//import com.zgz.data_structure.binarysearchtree.alnoe.Comparator;
-
+import com.zgz.data_structure.binarysearchtree.printer.BinaryTreeInfo;
 import java.util.Comparator;
-
 /**
  * <E extends Comparable>  表示传递的元素要实现Comparable接口
  * @param <E>
  */
-public class BinarySearchTree<E>{
+public class BinarySearchTree<E> implements BinaryTreeInfo {
     private int size = 0;
     private Node<E> root;//根节点
     public void clear(){
@@ -40,7 +37,10 @@ public class BinarySearchTree<E>{
         while (node!=null){
             compareResult = compare(element,node.element);
             parent = node;
-            if(compareResult==0){//相等
+            //如果传入进来的值相等,那么就覆盖,为什么要覆盖呢?这个是在自定义对象的时候起作用, 比如Person是按照年龄比较的,
+            //那么然后在Person类添加了其他属性, 但是年纪age是相等的,但是添加一个其他属性
+            if(compareResult==0){
+                node.element = element;
                 return;
             }else if(compareResult>0){//表示在根元素的右边
                 node = node.right;
@@ -82,6 +82,41 @@ public class BinarySearchTree<E>{
             throw new IllegalArgumentException("非法参数异常");
         }
     }
+
+    /**
+     * 前序遍历
+     */
+    public void preorderTraversal(){
+        preorderTraversal(root);
+    }
+    public void preorderTraversal(Node<E> node){
+        if(node==null){
+            return;
+        }
+        System.out.println(node.element);
+        preorderTraversal(node.left);
+        preorderTraversal(node.right);
+    }
+    @Override
+    public Object root() {
+        return root;
+    }
+
+    @Override
+    public Object left(Object node) {
+        return ((Node<E>)node).left;
+    }
+
+    @Override
+    public Object right(Object node) {
+        return ((Node<E>)node).right;
+    }
+
+    @Override
+    public Object string(Object node) {
+        return ((Node<E>)node).element;
+    }
+
     private static class Node<E>{
         E element;
         Node<E> left;//左子节点
