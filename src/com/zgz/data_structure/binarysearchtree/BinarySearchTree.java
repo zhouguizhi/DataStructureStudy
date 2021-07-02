@@ -84,6 +84,21 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
     }
 
     /**
+     * 中序遍历
+     */
+    public void inorderTraversal(){
+        inorderTraversal(root);
+    }
+    private void inorderTraversal(Node<E> node){
+        if(null==node){
+            return;
+        }
+        inorderTraversal(node.left);
+        //访问根节点
+        System.out.println(node.element);
+        inorderTraversal(node.right);
+    }
+    /**
      * 前序遍历
      */
     public void preorderTraversal(){
