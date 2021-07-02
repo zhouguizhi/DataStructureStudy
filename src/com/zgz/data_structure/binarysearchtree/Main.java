@@ -1,12 +1,15 @@
 package com.zgz.data_structure.binarysearchtree;
 import com.zgz.data_structure.binarysearchtree.printer.BinaryTrees;
-
+/**
+ * 测试
+ */
 public class Main {
     static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,12};
     public static void main(String[] args) {
 //        test1();
 //        test2();
-        test3();
+//        test3();
+          test4();
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
@@ -26,7 +29,7 @@ public class Main {
         BinarySearchTree<Integer> binarySearchTree = createObj();
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
-        binarySearchTree.preorderTraversal();
+        binarySearchTree.preOrderTraversal();
     }
     /**
      * 测试中序遍历
@@ -35,7 +38,7 @@ public class Main {
         BinarySearchTree<Integer> binarySearchTree = createObj();
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
-        binarySearchTree.inorderTraversal();
+        binarySearchTree.inOrderTraversal();
     }
     /**
      * 后序遍历测试
@@ -44,7 +47,16 @@ public class Main {
         BinarySearchTree<Integer> binarySearchTree = createObj();
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
-        binarySearchTree.postorderTraversal();
+        binarySearchTree.postOrderTraversal();
+    }
+    /**
+     * 层序遍历测试
+     */
+    private static void test4() {
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+        binarySearchTree.levelOrderTraversal();
     }
     static BinarySearchTree createObj(){
         return new BinarySearchTree();

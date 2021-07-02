@@ -1,6 +1,9 @@
 package com.zgz.data_structure.binarysearchtree;
 import com.zgz.data_structure.binarysearchtree.printer.BinaryTreeInfo;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * <E extends Comparable>  表示传递的元素要实现Comparable接口
  * @param <E>
@@ -83,48 +86,69 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
     }
     /**
+     * 层序遍历
+     * @param
+     */
+    public void levelOrderTraversal(){
+        if(root==null){
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            System.out.println(node.element);
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+        }
+    }
+    /**
      * 后序遍历
      */
-    public void postorderTraversal(){
-        postorderTraversal(root);
+    public void postOrderTraversal(){
+        postOrderTraversal(root);
     }
-    private void postorderTraversal(Node<E> node){
+    private void postOrderTraversal(Node<E> node){
         if(null==node){
             return;
         }
-        postorderTraversal(node.left);
-        postorderTraversal(node.right);
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
         //访问根节点
         System.out.println(node.element);
     }
     /**
      * 中序遍历
      */
-    public void inorderTraversal(){
-        inorderTraversal(root);
+    public void inOrderTraversal(){
+        inOrderTraversal(root);
     }
-    private void inorderTraversal(Node<E> node){
+    private void inOrderTraversal(Node<E> node){
         if(null==node){
             return;
         }
-        inorderTraversal(node.left);
+        inOrderTraversal(node.left);
         //访问根节点
         System.out.println(node.element);
-        inorderTraversal(node.right);
+        inOrderTraversal(node.right);
     }
     /**
      * 前序遍历
      */
-    public void preorderTraversal(){
-        preorderTraversal(root);
+    public void preOrderTraversal(){
+        preOrderTraversal(root);
     }
-    public void preorderTraversal(Node<E> node){
+    public void preOrderTraversal(Node<E> node){
         if(node==null){
             return;
         }
         System.out.println(node.element);
-        preorderTraversal(node.left);
-        preorderTraversal(node.right);
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
     }
     @Override
     public Object root() {
