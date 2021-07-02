@@ -2,12 +2,11 @@ package com.zgz.data_structure.binarysearchtree;
 import com.zgz.data_structure.binarysearchtree.printer.BinaryTrees;
 
 public class Main {
-    static int[] arr = new int[]{7,4,9,2,5,8,11,10,3,1,12};
+    static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,12};
     public static void main(String[] args) {
 //        test1();
 //        test2();
         test3();
-        //测试
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
