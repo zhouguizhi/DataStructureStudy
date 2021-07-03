@@ -3,7 +3,6 @@ import com.zgz.data_structure.binarysearchtree.printer.BinaryTreeInfo;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;
-
 /**
  * <E extends Comparable>  表示传递的元素要实现Comparable接口
  * @param <E>
@@ -85,6 +84,63 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             throw new IllegalArgumentException("非法参数异常");
         }
     }
+
+    /**
+     * 判断是不是一颗完全二叉树
+     * @return
+     */
+    public boolean isComplete(){
+        return false;
+    }
+    /**
+     * 计算二叉树的高度 使用层序遍历
+     * @return  返回二叉树的高度
+     */
+    public int height1(){
+        if(root==null){
+            return 0;
+        }
+        int height = 0;
+        //存储着每一层元素数量
+        int levelSize = 1;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            levelSize--;
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+            //意味着即将访问下一层
+            if(levelSize==0){
+                levelSize = queue.size();
+                height++;
+            }
+        }
+
+        return height;
+    }
+    /**
+     * 计算二叉树的高度 递归处理
+     * @return  返回二叉树的高度
+     */
+    public int height(){
+        return height(root);
+    }
+    /**
+     * 获取某一个节点的高度
+     * @param node
+     * @return
+     */
+    public int height(Node<E> node){
+        if(node==null){
+            return 0;
+        }
+        return 1+Math.max(height(node.left),height(node.right));
+    }
     //
     public void levelOrderTraversal(Visitor visitor){
         if(root==null||visitor==null){
@@ -139,6 +195,21 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         //访问根节点
         System.out.println(node.element);
     }
+    public void postOrderTraversal(Visitor visitor){
+        if(null==visitor){
+            return;
+        }
+        postOrderTraversal(root,visitor);
+    }
+    private void postOrderTraversal(Node<E> node,Visitor visitor){
+        if(null==node){
+            return;
+        }
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
+        //访问根节点
+        visitor.visit(node.element);
+    }
     /**
      * 中序遍历
      */
@@ -154,6 +225,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         System.out.println(node.element);
         inOrderTraversal(node.right);
     }
+
     /**
      * 中序遍历,带自定义的访问
      */
@@ -166,8 +238,10 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             return;
         }
         inOrderTraversal(node.left,visitor);
-        visitor.visit(node.element);
-        inOrderTraversal(node.right,visitor);
+        boolean isStop = visitor.visit(node.element);
+        if(!isStop){
+            inOrderTraversal(node.right,visitor);
+        }
     }
     /**
      * 前序遍历
@@ -183,13 +257,33 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         preOrderTraversal(node.left);
         preOrderTraversal(node.right);
     }
+    /**
+     * 前序遍历
+     */
+    public void preOrderTraversal(Visitor visitor){
+        if(null==visitor){
+            return;
+        }
+        preOrderTraversal(root,visitor);
+    }
+    public void preOrderTraversal(Node<E> node,Visitor visitor){
+        if(node==null){
+            return;
+        }
+        boolean isStop = visitor.visit(node.element);
+        if(!isStop){
+            preOrderTraversal(node.left);
+            preOrderTraversal(node.right);
+        }
+    }
 
     /**
      * 访问器
      * @return
      */
-    public interface Visitor<E>{
-        void visit(E element);
+    public static abstract class Visitor<E>{
+        public abstract boolean visit(E element);
+        public boolean isStop;
     }
     @Override
     public Object root() {

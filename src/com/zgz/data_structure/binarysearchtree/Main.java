@@ -11,7 +11,9 @@ public class Main {
 //        test3();
 //         test4();
 //        test5();
-        test6();
+//        test6();
+//          test7();
+        test8();
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
@@ -67,10 +69,11 @@ public class Main {
         BinarySearchTree<Integer> binarySearchTree = createObj();
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
-        binarySearchTree.levelOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+        binarySearchTree.levelOrderTraversal(new BinarySearchTree.Visitor<Object>() {
             @Override
-            public void visit(Integer element) {
+            public boolean visit(Object element) {
                 System.out.println("_"+element+"_");
+                return false;
             }
         });
     }
@@ -79,7 +82,50 @@ public class Main {
         BinarySearchTree<Integer> binarySearchTree = createObj();
         addDataFormArray(binarySearchTree);
         BinaryTrees.println(binarySearchTree);
-        binarySearchTree.inOrderTraversal((BinarySearchTree.Visitor<Integer>) element -> System.out.println(element+10));
+        binarySearchTree.inOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                System.out.println(element+10);
+                return false;
+            }
+        });
+    }
+    public static void test7(){
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+
+        binarySearchTree.preOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                return false;
+            }
+        });
+        binarySearchTree.inOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                return false;
+            }
+        });
+        binarySearchTree.postOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                return false;
+            }
+        });
+        binarySearchTree.levelOrderTraversal(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public boolean visit(Integer element) {
+                return false;
+            }
+        });
+    }
+    public static void test8(){
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+
+        System.out.println("根节点的高度:="+binarySearchTree.height1());
     }
     static BinarySearchTree createObj(){
         return new BinarySearchTree();
