@@ -4,7 +4,7 @@ import com.zgz.data_structure.binarysearchtree.printer.BinaryTrees;
  * 测试
  */
 public class Main {
-    static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,12};
+    static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,10};
     public static void main(String[] args) {
 //        test1();
 //        test2();
@@ -12,8 +12,9 @@ public class Main {
 //         test4();
 //        test5();
 //        test6();
-//          test7();
-        test8();
+//        test7();
+//        test8();
+        test9();
     }
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
@@ -126,6 +127,17 @@ public class Main {
         BinaryTrees.println(binarySearchTree);
 
         System.out.println("根节点的高度:="+binarySearchTree.height1());
+    }
+
+    /**
+     * 测试是不是完全二叉树
+     */
+    public static void test9(){
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+
+        System.out.println("是不是完全二叉树:="+binarySearchTree.isComplete());
     }
     static BinarySearchTree createObj(){
         return new BinarySearchTree();

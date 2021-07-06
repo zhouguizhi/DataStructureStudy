@@ -86,11 +86,30 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
     }
 
     /**
-     * 判断是不是一颗完全二叉树
+     * 判断是不是一颗完全二叉树,
+     * 首先要知道什么是完全二叉树,概念要弄明白, 这里判断是不是完全二叉树使用层序遍历方式
      * @return
      */
     public boolean isComplete(){
-        return false;
+        if(null==root) return false;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean isLeaf = false;
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            if(isLeaf&&!node.isLeaf()){
+                return false;
+            }
+            if(node.hasTwoChildren()){
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }else if(node.left==null&&node.right!=null){
+                return false;
+            }else{//后面遍历的节点都必须是叶子节点
+                isLeaf = true;
+            }
+        }
+        return true;
     }
     /**
      * 计算二叉树的高度 使用层序遍历
@@ -314,6 +333,21 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         public Node(E element,Node<E> parent) {
             this.element = element;
             this.parent = parent;
+        }
+        /**
+         * 判断是不是叶子节点
+         * @return
+         */
+        public boolean isLeaf(){
+            return  left==null&&right==null;
+        }
+
+        /**
+         * 释放有2个子节点
+         * @return
+         */
+        public boolean hasTwoChildren(){
+            return left!=null&&right!=null;
         }
     }
 }
