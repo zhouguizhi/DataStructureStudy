@@ -4,7 +4,7 @@ import com.zgz.data_structure.binarysearchtree.printer.BinaryTrees;
  * 测试
  */
 public class Main {
-    static int[] arr = new int[]{7,4,9,2,5,8,11,3,1,10};
+    static int[] arr = new int[]{7,4,9,2,5,8,11,3,1};
     public static void main(String[] args) {
 //        test1();
 //        test2();

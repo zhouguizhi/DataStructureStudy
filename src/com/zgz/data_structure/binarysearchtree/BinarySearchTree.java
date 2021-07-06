@@ -90,6 +90,34 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
      * 首先要知道什么是完全二叉树,概念要弄明白, 这里判断是不是完全二叉树使用层序遍历方式
      * @return
      */
+//    public boolean isComplete(){
+//        if(null==root) return false;
+//        Queue<Node> queue = new LinkedList<>();
+//        queue.offer(root);
+//        boolean isLeaf = false;
+//        while (!queue.isEmpty()){
+//            Node node = queue.poll();
+//            if(isLeaf&&!node.isLeaf()){
+//                return false;
+//            }
+//            if(node.hasTwoChildren()){
+//                queue.offer(node.left);
+//                queue.offer(node.right);
+//            }else if(node.left==null&&node.right!=null){
+//                return false;
+//            }else{//后面遍历的节点都必须是叶子节点
+//                isLeaf = true;
+//                if(node.left!=null){
+//                    queue.offer(node.left);
+//                }
+//            }
+//        }
+//        return true;
+//    }
+    /**
+     * 判断是不是一颗完全二叉树,另外一种写法
+     * @return
+     */
     public boolean isComplete(){
         if(null==root) return false;
         Queue<Node> queue = new LinkedList<>();
@@ -100,12 +128,17 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             if(isLeaf&&!node.isLeaf()){
                 return false;
             }
-            if(node.hasTwoChildren()){
+
+            if(node.left!=null){
                 queue.offer(node.left);
-                queue.offer(node.right);
-            }else if(node.left==null&&node.right!=null){
+            }else if(node.right!=null){
+                //走到这里是left=null right!=null
                 return false;
-            }else{//后面遍历的节点都必须是叶子节点
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }else{
+                //right=null
                 isLeaf = true;
             }
         }
