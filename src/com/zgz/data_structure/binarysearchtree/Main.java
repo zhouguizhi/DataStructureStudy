@@ -1,4 +1,5 @@
 package com.zgz.data_structure.binarysearchtree;
+import com.sun.tools.javac.util.GraphUtils;
 import com.zgz.data_structure.binarysearchtree.printer.BinaryTrees;
 /**
  * 测试
@@ -14,8 +15,22 @@ public class Main {
 //        test6();
 //        test7();
 //        test8();
-        test9();
+//        test9();
+        test10();
     }
+
+    /**
+     * 获取某一个节点的前驱节点
+     */
+    private static void test10() {
+        BinarySearchTree<Integer> binarySearchTree = createObj();
+        addDataFormArray(binarySearchTree);
+        BinaryTrees.println(binarySearchTree);
+
+//        binarySearchTree.predesess();
+        System.out.println("是不是完全二叉树:="+binarySearchTree.isComplete());
+    }
+
     private static void test() {
         BinarySearchTree<Integer> binarySearchTree =createObj();
         addDataFormArray(binarySearchTree);

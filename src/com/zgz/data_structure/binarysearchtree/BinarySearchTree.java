@@ -11,6 +11,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
     private int size = 0;
     private Node<E> root;//根节点
     public void clear(){
+        root = null;
         size=0;
     }
     //比较器
@@ -63,9 +64,41 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
     }
     public void remove(E element){
         checkNotNull(element);
+        remove(getElement(element));
+    }
+    public void remove(Node<E> node){
+        if(node==null){
+            return;
+        }
+        size--;
+        //表示度为2
+        if(node.hasTwoChildren()){
+            //找到后继节点
+            Node<E> sNode = successor(node);
+        }
+    }
+    /**
+     * 思路:从根节点开始找 然后遍历节点 拿出值和传入的element进行对比
+     * 根据值获取Node节点
+     * @param element 节点元素对应的值
+     * @return
+     */
+    private Node<E> getElement(E element){
+        Node<E> node = root;
+        while (node!=null){
+            int cmp = compare(element,node.element);
+            if(cmp==0){
+                return node;
+            }else if(cmp>0){
+                node = node.right;
+            }else{
+                node = node.left;
+            }
+        }
+        return null;
     }
     public boolean contains(E element){
-        return false;
+        return getElement(element)!=null;
     }
 
     /**
@@ -90,30 +123,30 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
      * 首先要知道什么是完全二叉树,概念要弄明白, 这里判断是不是完全二叉树使用层序遍历方式
      * @return
      */
-//    public boolean isComplete(){
-//        if(null==root) return false;
-//        Queue<Node> queue = new LinkedList<>();
-//        queue.offer(root);
-//        boolean isLeaf = false;
-//        while (!queue.isEmpty()){
-//            Node node = queue.poll();
-//            if(isLeaf&&!node.isLeaf()){
-//                return false;
-//            }
-//            if(node.hasTwoChildren()){
-//                queue.offer(node.left);
-//                queue.offer(node.right);
-//            }else if(node.left==null&&node.right!=null){
-//                return false;
-//            }else{//后面遍历的节点都必须是叶子节点
-//                isLeaf = true;
-//                if(node.left!=null){
-//                    queue.offer(node.left);
-//                }
-//            }
-//        }
-//        return true;
-//    }
+    public boolean isComplete1(){
+        if(null==root) return false;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean isLeaf = false;
+        while (!queue.isEmpty()){
+            Node node = queue.poll();
+            if(isLeaf&&!node.isLeaf()){
+                return false;
+            }
+            if(node.hasTwoChildren()){
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }else if(node.left==null&&node.right!=null){
+                return false;
+            }else{//后面遍历的节点都必须是叶子节点
+                isLeaf = true;
+                if(node.left!=null){
+                    queue.offer(node.left);
+                }
+            }
+        }
+        return true;
+    }
     /**
      * 判断是不是一颗完全二叉树,另外一种写法
      * @return
@@ -328,7 +361,53 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
             preOrderTraversal(node.right);
         }
     }
+//    public Node<E> getPredesess(Integer i){
+//        return predesess(new Node(i,));
+//    }
+    /**
+     * 获取某个节点的前驱节点
+     * @param node
+     * @return
+     */
+    public Node<E> predesess(Node<E> node){
+         if(null==node){
+             return null;
+         }
 
+        Node<E> leftNode = node.left;
+        if(leftNode!=null){
+            while (leftNode.right!=null){
+                leftNode = leftNode.right;
+            }
+            return leftNode;
+         }
+        while (node.parent!=null&&node==node.parent.left){
+           node =  node.parent;
+        }
+        return node.parent;
+    }
+    /**
+     * 获取某个节点的后继节点
+     * @param node
+     * @return
+     */
+    public Node<E> successor(Node<E> node){
+        if(null==node){
+            return null;
+        }
+
+        Node<E> leftNode = node.right;
+        if(leftNode!=null){
+            while (leftNode.left!=null){
+                leftNode = leftNode.left;
+            }
+            return leftNode;
+        }
+        while (node.parent!=null&&node==node.parent.right){
+            node =  node.parent;
+        }
+        return node.parent;
+    }
     /**
      * 访问器
      * @return
